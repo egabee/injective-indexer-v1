@@ -4,7 +4,7 @@ import { createTransactionObject, handleMessageType } from './helper'
 
 export async function handleTx(tx: CosmosTransaction): Promise<void> {
   const height = tx.block.header.height
-  logger.info(`-------- ${height} -----------`)
+  // logger.info(`-------- ${height} -----------`)
 
   const txMessages = []
 

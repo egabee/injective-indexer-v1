@@ -112,17 +112,10 @@ const project: CosmosProject = {
         'injective.peggy.v1.types',
         {
           file: './proto/injective/peggy/v1/types.proto',
-          messages: [
-            'BridgeValidator',
-            'Valset',
-            'LastObservedEthereumBlockHeight',
-            'LastClaimEvent',
-            'ERC20ToDenom'
-          ]
-          ,
+          messages: ['BridgeValidator', 'Valset', 'LastObservedEthereumBlockHeight', 'LastClaimEvent', 'ERC20ToDenom'],
         },
       ],
-      
+
       [
         '/injective.oracle.v1beta1.MsgRelayPriceFeedPrice',
         {
@@ -248,6 +241,13 @@ const project: CosmosProject = {
         },
       ],
       [
+        'cosmos.gov.v1',
+        {
+          file: './proto/cosmos/gov/v1/tx.proto',
+          messages: ['MsgVote'],
+        },
+      ],
+      [
         'cosmos.gov.v1beta1.option',
         {
           file: './proto/cosmos/gov/v1beta1/gov.proto',
@@ -343,7 +343,7 @@ const project: CosmosProject = {
         },
       ],
       [
-        'cosmos.staking.v1beta1',
+        'cosmos.staking.v1beta1.transactions',
         {
           file: './proto/cosmos/staking/v1beta1/tx.proto',
           messages: [
@@ -357,6 +357,38 @@ const project: CosmosProject = {
           ],
         },
       ],
+      [
+        'cosmos.staking.v1beta1',
+        {
+          file: './proto/cosmos/staking/v1beta1/staking.proto',
+          messages: [
+            'HistoricalInfo',
+            'CommissionRates',
+            'Commission',
+            'Description',
+            'Validator',
+            'ValAddresses',
+            'DVPair',
+            'DVPairs',
+            'DVVTriplet',
+            'DVVTriplets',
+            'Delegation',
+            'UnbondingDelegation',
+            'UnbondingDelegationEntry',
+            'RedelegationEntry',
+            'Redelegation',
+            'Params',
+          ],
+        },
+      ],
+      [
+        'injective.insurance.v1beta1',
+        {
+          file: './proto/injective/insurance/v1beta1/tx.proto',
+          messages: ['MsgUnderwrite', 'MsgRequestRedemption', 'MsgCreateInsuranceFund'],
+        },
+      ],
+
       [
         'cosmwasm.wasm.v1',
         {
@@ -373,8 +405,8 @@ const project: CosmosProject = {
   dataSources: [
     {
       kind: CosmosDatasourceKind.Runtime,
-      startBlock: 52799166,
-      endBlock: 52899166,
+      startBlock: 52999166,
+      endBlock: 53009166,
       mapping: {
         file: './dist/index.js',
         handlers: [
