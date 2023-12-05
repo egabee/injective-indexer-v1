@@ -67,7 +67,14 @@ export function handleMessageType(decodedMsg: any, message: ProtoAny): GenericMe
     const decodedMsgs = messageList.map(({ typeUrl, value }) => decodeMessage(value, typeUrl))
     genericMessage = { msgs: decodedMsgs, ...meta, ...genericMessage }
   } else if (msg) {
-    genericMessage = { msg: JSON.parse(textDecoder.decode(msg)), ...meta, ...genericMessage }
+    try {
+      const parsedJson = textDecoder.decode(msg)
+      genericMessage = { msg: parsedJson, ...meta, ...genericMessage }
+      // logger.info(`+++++++++++++++>> ${toJson(genericMessage)}`)
+    } catch (error) {
+      genericMessage = { msg, ...meta, ...genericMessage }
+      // logger.info(`this is ${toJson(genericMessage)}`)
+    }
   } else if (clientMessage) {
     const { typeUrl, value } = clientMessage
     genericMessage = { clientMessage: decodeMessage(value, typeUrl), ...meta, ...genericMessage }

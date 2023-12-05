@@ -4,7 +4,7 @@ import { createTransactionObject, handleMessageType } from './helper'
 
 export async function handleTx(tx: CosmosTransaction): Promise<void> {
   const height = tx.block.header.height
-  logger.info(`-------- ${height} -----------`)
+  // logger.info(`-------- ${height} -----------`)
 
   const txMessages = []
 
@@ -22,9 +22,7 @@ export async function handleTx(tx: CosmosTransaction): Promise<void> {
 
     try {
       const decodedMsg = knownType.decode(value)
-
       const fullMsg = handleMessageType(decodedMsg, { typeUrl, value })
-
       txMessages.push(fullMsg)
     } catch (error) {
       throw error // throw the error to stop the indexer

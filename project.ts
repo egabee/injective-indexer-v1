@@ -20,6 +20,8 @@ const project: CosmosProject = {
     file: './schema.graphql',
   },
   network: {
+    // bypassBlocks:[52669181,52669196],
+
     /* The genesis hash of the network (hash of block 0) */
     /**
      * These endpoint(s) should be non-pruned archive nodes
@@ -27,17 +29,135 @@ const project: CosmosProject = {
      * When developing your project we suggest getting a private API key
      * We suggest providing an array of endpoints for increased speed and reliability
      */
-    endpoint: [
-      'https://injective-rpc.w3coins.io',
-      // 'https://full-node.testnet-1.coreum.dev:26657'
-      // https://injective-rpc.w3coins.io   52669166
-    ],
+    endpoint: ['https://injective-rpc.publicnode.com:443'],
 
     // --------------- Chain id ------------------ [ ]
     chainId: 'injective-1',
 
     chaintypes: new Map([
-      //"type": "/cosmos.slashing.v1beta1.MsgUnjail",
+      [
+        '/injective.exchange.v1beta1.MsgDeposit',
+        {
+          file: './proto/injective/exchange/v1beta1/tx.proto',
+          messages: [
+            'MsgTransferAndExecute',
+            'MsgMultiExecute',
+            'MsgDeposit',
+            'MsgWithdraw',
+            'MsgCreateSpotLimitOrder',
+            'MsgBatchCreateSpotLimitOrders',
+            'MsgInstantSpotMarketLaunch',
+            'MsgInstantPerpetualMarketLaunch',
+            'MsgInstantBinaryOptionsMarketLaunch',
+            'MsgInstantExpiryFuturesMarketLaunch',
+            'MsgCreateSpotMarketOrder',
+            'MsgCreateDerivativeLimitOrder',
+            'MsgCreateBinaryOptionsLimitOrder',
+            'MsgBatchCreateDerivativeLimitOrders',
+            'MsgBatchCancelSpotOrders',
+            'MsgBatchCancelBinaryOptionsOrders',
+            'MsgBatchUpdateOrders',
+            'MsgCreateDerivativeMarketOrder',
+            'DerivativeMarketOrderResults',
+            'MsgCreateBinaryOptionsMarketOrder',
+            'MsgCancelDerivativeOrder',
+            'MsgCancelBinaryOptionsOrder',
+            'OrderData',
+            'MsgBatchCancelDerivativeOrders',
+            'MsgSubaccountTransfer',
+            'MsgExternalTransfer',
+            'MsgLiquidatePosition',
+            'MsgIncreasePositionMargin',
+            'MsgPrivilegedExecuteContract',
+            'SpotMarketParamUpdateProposal',
+            'ExchangeType',
+            'ExchangeEnableProposal',
+            'BatchExchangeModificationProposal',
+            'SpotMarketLaunchProposal',
+            'PerpetualMarketLaunchProposal',
+            'BinaryOptionsMarketLaunchProposal',
+            'ExpiryFuturesMarketLaunchProposal',
+            'DerivativeMarketParamUpdateProposal',
+            'MarketForcedSettlementProposal',
+            'UpdateDenomDecimalsProposal',
+            'DenomDecimals',
+            'BinaryOptionsMarketParamUpdateProposal',
+            'ProviderOracleParams',
+            'OracleParams',
+            'TradingRewardCampaignLaunchProposal',
+            'TradingRewardCampaignUpdateProposal',
+            'RewardPointUpdate',
+            'TradingRewardPendingPointsUpdateProposal',
+            'FeeDiscountProposal',
+            'BatchCommunityPoolSpendProposal',
+            'MsgRewardsOptOut',
+            'MsgReclaimLockedFunds',
+            'MsgSignData',
+            'MsgSignDoc',
+            'MsgAdminUpdateBinaryOptionsMarket',
+            'AtomicMarketOrderFeeMultiplierScheduleProposal',
+            'FundsDirection',
+            'MsgCancelSpotOrder',
+          ],
+        },
+      ],
+      [
+        '/injective.oracle.v1beta1.spotorder',
+        {
+          file: './proto/injective/exchange/v1beta1/exchange.proto', //
+          messages: ['SpotOrder'],
+        },
+      ],
+      [
+        'injective.peggy.v1.types',
+        {
+          file: './proto/injective/peggy/v1/types.proto',
+          messages: ['BridgeValidator', 'Valset', 'LastObservedEthereumBlockHeight', 'LastClaimEvent', 'ERC20ToDenom'],
+        },
+      ],
+
+      [
+        '/injective.oracle.v1beta1.MsgRelayPriceFeedPrice',
+        {
+          file: './proto/injective/oracle/v1beta1/tx.proto',
+          messages: ['MsgRelayPriceFeedPrice'],
+        },
+      ],
+      [
+        'injective.auction.v1beta1.MsgBid',
+        {
+          file: './proto/injective/auction/v1beta1/tx.proto',
+          messages: ['MsgBid'],
+        },
+      ],
+      [
+        '/injective.peggy',
+        {
+          file: './proto/injective/peggy/v1/msgs.proto',
+          messages: [
+            'MsgSetOrchestratorAddresses',
+            'MsgValsetConfirm',
+            'MsgSendToEth',
+            'MsgRequestBatch',
+            'MsgConfirmBatch',
+            'MsgDepositClaim',
+            'MsgWithdrawClaim',
+            'MsgERC20DeployedClaim',
+            'MsgCancelSendToEth',
+            'MsgSubmitBadSignatureEvidence',
+            'MsgValsetUpdatedClaim',
+          ],
+        },
+      ],
+
+      [
+        '/injective.wasmx.v1.MsgExecuteContractCompat',
+        {
+          file: './proto/injective/wasmx/v1/tx.proto',
+          messages: ['MsgExecuteContractCompat'],
+        },
+      ],
+
       [
         'cosmos.slashing.v1beta1.MsgUnjail',
         {
@@ -117,6 +237,13 @@ const project: CosmosProject = {
         'cosmos.gov.v1beta1',
         {
           file: './proto/cosmos/gov/v1beta1/tx.proto',
+          messages: ['MsgVote'],
+        },
+      ],
+      [
+        'cosmos.gov.v1',
+        {
+          file: './proto/cosmos/gov/v1/tx.proto',
           messages: ['MsgVote'],
         },
       ],
@@ -216,9 +343,52 @@ const project: CosmosProject = {
         },
       ],
       [
-        'cosmos.staking.v1beta1',
-        { file: './proto/cosmos/staking/v1beta1/tx.proto', messages: ['MsgDelegate', 'MsgBeginRedelegate'] },
+        'cosmos.staking.v1beta1.transactions',
+        {
+          file: './proto/cosmos/staking/v1beta1/tx.proto',
+          messages: [
+            'MsgCreateValidator',
+            'MsgEditValidator',
+            'MsgDelegate',
+            'MsgBeginRedelegate',
+            'MsgUndelegate',
+            'MsgCancelUnbondingDelegation',
+            'MsgUpdateParams',
+          ],
+        },
       ],
+      [
+        'cosmos.staking.v1beta1',
+        {
+          file: './proto/cosmos/staking/v1beta1/staking.proto',
+          messages: [
+            'HistoricalInfo',
+            'CommissionRates',
+            'Commission',
+            'Description',
+            'Validator',
+            'ValAddresses',
+            'DVPair',
+            'DVPairs',
+            'DVVTriplet',
+            'DVVTriplets',
+            'Delegation',
+            'UnbondingDelegation',
+            'UnbondingDelegationEntry',
+            'RedelegationEntry',
+            'Redelegation',
+            'Params',
+          ],
+        },
+      ],
+      [
+        'injective.insurance.v1beta1',
+        {
+          file: './proto/injective/insurance/v1beta1/tx.proto',
+          messages: ['MsgUnderwrite', 'MsgRequestRedemption', 'MsgCreateInsuranceFund'],
+        },
+      ],
+
       [
         'cosmwasm.wasm.v1',
         {
@@ -235,7 +405,8 @@ const project: CosmosProject = {
   dataSources: [
     {
       kind: CosmosDatasourceKind.Runtime,
-      startBlock: 52669166,
+      startBlock: 52999166,
+      endBlock: 53009166,
       mapping: {
         file: './dist/index.js',
         handlers: [
