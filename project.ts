@@ -1129,10 +1129,17 @@ const project: CosmosProject = {
         },
       ],
       [
-        '/injective.oracle.v1beta1.spotorder',
+        '/injective.exchange.v1beta1.spotorder',
         {
           file: './proto/injective/exchange/v1beta1/exchange.proto', //
           messages: ['SpotOrder'],
+        },
+      ],
+      [
+        '/injective.oracle.v1beta1.tx',
+        {
+          file: './proto/injective/oracle/v1beta1/tx.proto', 
+          messages: ['MsgRelayProviderPrices','MsgRelayPriceFeedPrice','MsgRelayBandRates','MsgRelayCoinbaseMessages','MsgRequestBandIBCRates'],
         },
       ],
       [
@@ -1143,13 +1150,7 @@ const project: CosmosProject = {
         },
       ],
 
-      [
-        '/injective.oracle.v1beta1.MsgRelayPriceFeedPrice',
-        {
-          file: './proto/injective/oracle/v1beta1/tx.proto',
-          messages: ['MsgRelayPriceFeedPrice'],
-        },
-      ],
+    
       [
         'injective.auction.v1beta1.MsgBid',
         {
@@ -1191,13 +1192,20 @@ const project: CosmosProject = {
           messages: ['PubKey'],
         },
       ],
+      [
+        '/injective.types.v1beta1.ExtensionOptionsWeb3Tx',
+        {
+          file: './proto/injective/types/v1beta1/tx_ext.proto',
+          messages: ['ExtensionOptionsWeb3Tx'],
+        },
+      ],
     ]),
   },
 
   dataSources: [
     {
       kind: CosmosDatasourceKind.Runtime,
-      startBlock: 64819343,
+      startBlock: 67260076,
       // endBlock: 53009166,
       mapping: {
         file: './dist/index.js',

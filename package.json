@@ -12,7 +12,7 @@
     "test": "subql build && subql-node-cosmos test",
     "clean": "rm -rf ./dist && rm -rf ./.data",
     "fire": "subql build && docker compose pull && docker compose up --remove-orphans",
-    "thanos": "sudo rm -rf ./dist &&sudo rm -rf ./.data && subql build && docker-compose pull && docker-compose up --remove-orphans"
+    "thanos": "sudo rm -rf ./dist && sudo rm -rf ./.data && subql build && docker-compose pull && docker-compose up --remove-orphans"
   },
   "homepage": "https://github.com/egabee/Indexer-templete",
   "repository": "github: egabee/Indexer-templete",
