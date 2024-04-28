@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@egabee/cosmos-indexer-common':
+    specifier: ^1.0.0
+    version: 1.0.0
   '@subql/cli':
     specifier: ^4.5.2
     version: 4.5.2(@ethersproject/abi@5.7.0)(@ethersproject/providers@5.7.2)(@polkadot/api@10.10.1)(@types/node@17.0.45)(class-transformer@0.5.1)(class-validator@0.14.0)(pg@8.11.3)
@@ -69,7 +72,7 @@ devDependencies:
     version: 0.32.3
   '@subql/node-cosmos':
     specifier: latest
-    version: 3.3.1(@polkadot/api@10.10.1)(@subql/utils@2.5.0)(class-transformer@0.5.1)(class-validator@0.14.0)(ejs@3.1.9)(graphql@15.8.0)(node-fetch@2.6.7)
+    version: 3.3.1(@polkadot/api@10.10.1)(@subql/utils@2.9.1)(class-transformer@0.5.1)(class-validator@0.14.0)(ejs@3.1.9)(graphql@15.8.0)(node-fetch@2.6.7)
   '@subql/testing':
     specifier: latest
     version: 2.1.0
@@ -3052,6 +3055,14 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: false
 
+  /@egabee/cosmos-indexer-common@1.0.0:
+    resolution: {integrity: sha512-r3jS02FVHYh1kt1GnKFNJI6UwJVFGy59GJzCeQL83yh56QGrvNjgXgp1O6gIIGYqHzVAzAea0H0jAcf6w9AVsQ==}
+    dependencies:
+      is-base64: 1.1.0
+      kafkajs: 2.2.4
+      long: 5.2.3
+    dev: false
+
   /@eslint-community/eslint-utils@4.4.0(eslint@8.54.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -4824,7 +4835,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@subql/node-cosmos@3.3.1(@polkadot/api@10.10.1)(@subql/utils@2.5.0)(class-transformer@0.5.1)(class-validator@0.14.0)(ejs@3.1.9)(graphql@15.8.0)(node-fetch@2.6.7):
+  /@subql/node-cosmos@3.3.1(@polkadot/api@10.10.1)(@subql/utils@2.9.1)(class-transformer@0.5.1)(class-validator@0.14.0)(ejs@3.1.9)(graphql@15.8.0)(node-fetch@2.6.7):
     resolution: {integrity: sha512-HkdvYUdGnBRKpTLQwRLRxTXyUCOAvWTTbBEe6HYrrMjeMe3U9P4udIYCfwzoMlJPSbTZ90u1YKWRs+zby8ty5g==}
     hasBin: true
     peerDependencies:
@@ -4843,7 +4854,7 @@ packages:
       '@subql/common-cosmos': 3.2.1(class-transformer@0.5.1)(class-validator@0.14.0)(ejs@3.1.9)(node-fetch@2.6.7)
       '@subql/node-core': 6.3.0(@nestjs/core@9.4.3)(@polkadot/api@10.10.1)(class-transformer@0.5.1)(class-validator@0.14.0)(graphql@15.8.0)(node-fetch@2.6.7)(pg@8.11.3)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@subql/types-cosmos': 3.2.1
-      '@subql/utils': 2.5.0(pg@8.11.3)
+      '@subql/utils': 2.9.1(pg@8.11.3)
       cosmjs-types: 0.7.2
       cron-converter: 1.0.2
       eventemitter2: 6.4.9
@@ -5062,7 +5073,6 @@ packages:
       - sqlite3
       - supports-color
       - tedious
-    dev: false
 
   /@subql/x-cosmology-ast@1.4.10:
     resolution: {integrity: sha512-oXIDzneQJy9IzwjRwrLONDx6Q4tyJnX5ELUZqoHf8YXQExTdNO73ufcQah52Curq0Y465mxcdptil1urmEe4zg==}
@@ -5238,7 +5248,6 @@ packages:
       wkx: 0.5.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@substrate/connect-extension-protocol@1.0.1:
     resolution: {integrity: sha512-161JhCC1csjH3GE5mPLEd7HbWtwNSPJBg3p1Ksz9SFlTzj/bgEwudiRN2y5i0MoLGCIJRYKyKGMxVnd29PzNjg==}
@@ -11026,7 +11035,6 @@ packages:
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
-    dev: false
 
   /tdigest@0.1.2:
     resolution: {integrity: sha512-+G0LLgjjo9BZX2MfdvPfH+MKLCrxlXSYec5DaPYP1fe6Iyhf0/fSmJ0bFiZ1F8BT6cGXl2LpltQptzjXKWEkKA==}
