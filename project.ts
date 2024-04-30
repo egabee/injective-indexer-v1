@@ -29,10 +29,10 @@ const project: CosmosProject = {
      * When developing your project we suggest getting a private API key
      * We suggest providing an array of endpoints for increased speed and reliability
      */
-    endpoint: ['https://injective-rpc.publicnode.com:443'],
+    endpoint: ['https://injective-testnet-rpc.publicnode.com:443'],
 
     // --------------- Chain id ------------------ [ ]
-    chainId: 'injective-1',
+    chainId: 'injective-888',
 
     chaintypes: new Map([
       // =====================================================
